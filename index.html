@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="##########">
+  <meta name="keywords" content="LatentCLR">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FairStyle: Debiasing StyleGAN2 with Style Channel Manipulations</title>
+  <!-- BAAk -->
+  <!-- Global site tag (gtag.js) - Google Analytics  -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+
+            <h1 class="title is-1 publication-title">FairStyle: Debiasing StyleGAN2 with Style Channel Manipulations</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <span>Cemre Karakas,</span>
+              <span class="author-block">
+                <a href="https://github.com/alaradirik">Alara Dirik,</a>
+              <span class="author-block">
+                <span>Eylul Yalcinkaya,<span>
+              </span>
+              <span class="author-block">
+                <a href="https://pinguar.org/">Pinar Yanardag</a>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Boğaziçi University</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2112.08493"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span> 
+                <!-- Video Link. -->
+                <span class="link-block">
+                  <a href="https://youtu.be/ILm_5tvtzPI"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/catlab-team/stylemc"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Video</h2>
+          <figure class="image is-16by9">
+            <iframe class="has-ratio" width="640" height="360" src="https://www.youtube.com/embed/ILm_5tvtzPI"
+                    frameborder="0" allowfullscreen></iframe>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+            Recent advances in generative adversarial networks have shown that it is possible to generate high-resolution and hyperrealistic images. However, the images produced by GANs are only as fair and representative as the datasets on which they are trained. In this paper, we propose a method for directly modifying a pre-trained StyleGAN2 model that can be used to generate a balanced set of images with respect to one (e.g., eyeglasses) or more attributes (e.g., gender and eyeglasses). Our method takes advantage of the style space of the StyleGAN2 model to perform disentangled control of the target attributes to be debiased. Our method does not require training additional models and directly debiases the GAN model, paving the way for its use in various downstream applications. Our experiments show that our method successfully debiases the GAN model within a few minutes without compromising the quality of the generated images. To promote fair generative models, we share the code and debiased models  at https://github.com/catlab-team/fairstyle.
+            </p>
+          </div>
+          <img src="static/images/teaser.png">
+        </div>
+      </div>
+      <br>
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">FairStyle Framework</h2>
+
+          <div class="content has-text-justified">
+            <img src="static/images/framework.png" width="50%">
+            <p>
+              The architecture of StyleMC (using the text prompt "Mohawk" as an example).
+              The latent code <b>s</b> and ∆s+s are passed through the generator. The global manipulation
+              direction ∆s corresponding to the text promptis optimized by minimizing CLIP loss
+              and identity loss.
+              <ul>
+                <li><b>Fast Manipulation:</b> We propose a fast text-guided image generation and manipulation method that finds multiple style channels which control the desired attributes in 5s per text.</li>
+                <li><b>Low resolution layers:</b> Unlike previous work, our method finds directions using only layers up to 256×256 resolution within StyleGAN2, providing a significant speedup. We then use the found directions to apply manipulations and generate images at high resolutions such as 1024×1024.</li>
+                <li><b>Small batch of images:</b> Our method uses only 128 randomly generated images to find stable and global manipulation directions regardless of the given text prompt. </li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">A Variety of Manipulations</h2>
+
+        <div class="container is-max-desktop">
+          <h2 class="title is-4">StyleGAN2 FFHQ Directions</h2>
+
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <div class="column is-full-width">
+                <div class="publication-body">
+                  <img src="static/images/final.jpg" height="1024">
+                  <em>
+                    A variety of manipulations on SyleGAN2 FFHQ model. Rows 1-4 shows inverted real images and Rows 5-8 showsrandomly generated images.The text prompt used for the manipulation is above each column.
+                  </em>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="item item-shiba">
+              <img src="static/gif/makeup_04_15.gif">
+            </div>
+            <div class="item item-fullbody">
+              <img src="static/gif/Donald_Trump_04_30.gif">
+            </div>
+            <div class="item item-blueshirt">
+              <img src="static/gif/a_person_with_mohawk_hairstyle_05_40.gif">
+            </div>
+            <div class="item item-mask">
+              <img src="static/gif/makeup_09_15.gif">
+            </div>
+            <div class="item item-mask">
+              <img src="static/gif/Donald_Trump_54_30.gif">
+            </div>
+            <div class="item item-mask">
+              <img src="static/gif/a_person_with_mohawk_hairstyle_09_60.gif">
+            </div>
+            <div class="item item-mask">
+              <img src="static/gif/makeup_32_15.gif">
+            </div>
+            <div class="item item-mask">
+              <img src="static/gif/Donald_Trump_66_30.gif">
+            </div>
+            <div class="item item-mask">
+              <img src="static/gif/a_person_with_mohawk_hairstyle_57_60.gif">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </section>
+
+  <section>
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Comparison with other methods</h2>
+      <br>
+      <div class="container is-max-desktop">
+        <h2 class="title is-4">Comparison with StyleCLIP and TediGAN</h2>
+        <div class="content has-text-justified">
+          <p>
+            Comparison of our method with TediGAN, StyleCLIP-GD and StyleCLIP-LM methods.
+          </p>
+          <img src="static/images/comparison.png">
+        </div>
+      </div>
+      <br>
+      <div class="container is-max-desktop">
+        <h2 class="title is-4">Comparison with Unsupervised Methods</h2>
+        <div class="content has-text-justified">
+          <p>
+            Comparison with GANspace, SeFa and LatentCLR methods. The leftmost image represents the input image, 
+            while images denoted with ↑ and ↓ represent edits in the positive or negative direction.
+          </p>
+          <img src="static/images/unsupervised.png">
+        </div>
+      </div>
+    </div>
+    <br>
+  </section>
+
+  <section>
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Poster</h2>
+      <div class="content has-text-justified">
+        <img src="static/images/poster.png">
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@misc{kocasari2021stylemc,
+    title={StyleMC: Multi-Channel Based Fast Text-Guided Image Generation and Manipulation},
+    author={Umut Kocasarı and Alara Dirik and Mert Tiftikci and Pinar Yanardag},
+    year={2022}
+}</code></pre>
+    </div>
+  </section>
+
+  <section class="section" id="ack">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Acknowledgments</h2>
+      <p>
+        This publication has been produced benefiting from the 2232 International
+        Fellowship for Outstanding Researchers Program of TUBITAK (Project No: 118c321).
+        We also acknowledge the support of NVIDIA Corporation through the donation of the
+        TITAN RTX GPU and GCP research credits from Google.
+      </p>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                                                  href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              Template from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
