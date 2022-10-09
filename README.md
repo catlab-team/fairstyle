@@ -5,13 +5,12 @@ This is the repository that contains source code for the [FairStyle website](htt
 
 If you find our work useful please cite:
 ```
-@inproceedings{kocasari2021stylemc,
+@article{Karakas2022FairStyleDS,
   title={FairStyle: Debiasing StyleGAN2 with Style Channel Manipulations},
-  author={Karakas, Cemre and Dirik, Alara and Yalcinkaya, Eylul and Yanardag, Pinar},
-  booktitle={},
-  month={},
+  author={Cemre Karakas and Alara Dirik and Eyl{\"u}l Yalçınkaya and Pinar Yanardag},
+  journal={ArXiv},
   year={2022},
-  pages={}
+  volume={abs/2202.06240}
 }
 ```
 
